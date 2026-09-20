@@ -1,4 +1,5 @@
 #include "i2c.h"
+#include "main.h"   /* Error_Handler() 的声明 */
 
 I2C_HandleTypeDef hi2c2;
 

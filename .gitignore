@@ -31,5 +31,4 @@ Release/
 Thumbs.db
 .DS_Store
 
-# AI 工具本地配置
-.claude/
+

@@ -1,0 +1,81 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.2.200.202604021615/tools/bin/make.exe",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build",
+                "-j8"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Generate BIN",
+            "type": "shell",
+            "command": "C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/arm-none-eabi-objcopy.exe",
+            "args": [
+                "-O",
+                "binary",
+                "${workspaceFolder}/build/project1.elf",
+                "${workspaceFolder}/build/project1.bin"
+            ],
+            "dependsOn": ["Build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash with ST-LINK",
+            "type": "shell",
+            "command": "\"C:/Program Files (x86)/STMicroelectronics/STM32 ST-LINK Utility/ST-LINK Utility/ST-LINK_CLI.exe\"",
+            "args": [
+                "-c",
+                "SWD",
+                "UR",
+                "-P",
+                "${workspaceFolder}/build/project1.bin",
+                "0x08000000",
+                "-V",
+                "-Rst"
+            ],
+            "dependsOn": ["Generate BIN"],
+            "group": "test",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build and Flash",
+            "dependsOn": ["Build", "Generate BIN", "Flash with ST-LINK"],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.2.200.202604021615/tools/bin/make.exe",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build",
+                "clean"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -6,5 +6,6 @@
 extern I2C_HandleTypeDef hi2c2;
 
 void MX_I2C2_Init(void);
+void I2C2_BusRecover(void);
 
 #endif /* __I2C_H */

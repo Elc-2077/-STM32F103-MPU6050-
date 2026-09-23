@@ -96,7 +96,7 @@ static void Draw_AttitudeIndicator(float pitch, float roll)
 
     for (x = -hw; x <= hw; x++, d += (-sn))
     {
-      if (d < 0.0f && (((x + y) & 1) == 0))
+      if (d > 0.0f && (((x + y) & 1) == 0))
       {
         OLED_SetPixel((uint8_t)(AI_CX + x), (uint8_t)(AI_CY + y), 1);
       }

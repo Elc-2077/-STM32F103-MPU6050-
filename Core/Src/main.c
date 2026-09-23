@@ -81,7 +81,7 @@ static void Draw_AttitudeIndicator(float pitch, float roll)
 
   /* 地平线方向 (cs, sn)，地面侧法线 (-sn, cs) */
 
-  /* --- 天空侧填充网点，区分天空/地面（与地面侧填充相反） --- */
+  /* --- 地面侧填充网点，区分地面/天空（竖直状态下x-z轴互换） --- */
   for (y = -AI_R; y <= AI_R; y++)
   {
     float halfw = (float)(AI_R * AI_R - y * y);
@@ -96,7 +96,7 @@ static void Draw_AttitudeIndicator(float pitch, float roll)
 
     for (x = -hw; x <= hw; x++, d += (-sn))
     {
-      if (d < 0.0f && (((x + y) & 1) == 0))
+      if (d > 0.0f && (((x + y) & 1) == 0))
       {
         OLED_SetPixel((uint8_t)(AI_CX + x), (uint8_t)(AI_CY + y), 1);
       }

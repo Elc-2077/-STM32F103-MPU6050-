@@ -46,7 +46,7 @@
    加速度和陀螺仪必须用同一套映射。 */
 #define UP_X(rx, ry, rz)   (-(ry))
 #define UP_Y(rx, ry, rz)   (rx)
-#define UP_Z(rx, ry, rz)   (rz)
+#define UP_Z(rx, ry, rz)   (-(rz))
 
 /* 机体角速度 -> 欧拉角速度投影（见 Attitude_Update 里的推导注释）。
    若姿态仪动作方向整体相反，把这两个宏取反 */

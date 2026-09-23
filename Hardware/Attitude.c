@@ -223,7 +223,7 @@ void Attitude_Update(void)
 
     /* --- 竖直模式角度：加速度解算 --- */
     inplane = sqrtf(ux * ux + uy * uy);
-    pitch_acc = -atan2f(uz, inplane) * RAD2DEG;    /* 屏幕后倒为正 */
+    pitch_acc = atan2f(uz, inplane) * RAD2DEG;    /* 屏幕后倒为正 */
     roll_acc  = atan2f(ux, uy) * RAD2DEG;         /* 屏幕平面内旋转 */
 
     /* --- 第三级：互补滤波，陀螺仪给高频、加速度给低频 ---
